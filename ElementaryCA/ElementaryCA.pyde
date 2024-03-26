@@ -1,11 +1,11 @@
 #CA variables
 
-w = 50 
-rows = 10
-cols = 100
+w = 1
+rows = 2000
+cols = 2000
 
-ruleset = [0,0,0,1,1,1,1,0] #rule 30
-
+ruleset = [0,1,0,1,1,0,1,0] #rule 90
+#ruleset = [0,0,0,1,1,1,1,0] # rule 30
 def rules(a,b,c):
     return ruleset[7 - (4*a + 2*b + c)] # 2^2*a + 2^1*b + 2^0*c
 
@@ -22,8 +22,9 @@ def generate():
                
 
 def setup():
+    noStroke()
     global cells
-    size(600,600)
+    size(1000,700)
     #first row
     cells = []
     for r in range(rows):

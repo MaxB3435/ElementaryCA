@@ -1,9 +1,10 @@
 #CA variables
 
-w = 1
-rows = 2000
-cols = 2000
-
+w = 10
+rows = 400
+cols = 400
+h = 0
+b = 0
 #ruleset = [0,0,0,0,0,0,1,1] 
 ruleset = [0,1,0,1,1,0,1,0] # rule 90
 #ruleset = [0,0,0,1,1,1,1,0] # rule 30
@@ -38,11 +39,33 @@ def setup():
     cells = generate()
     
 def draw():
+    global h
+    global b
     background(255)
     for i, cell in enumerate(cells): #rows
         for j, v in enumerate(cell): #columns
             if v == 1:
                 fill(0)
             else:fill(255)
-            rect(j*w-(cols*w-width)/2,w*i-1,w,w)
+            rect(j*w-(cols*w-width)/2+(b*w),w*i+(h*w),w,w)
+            
+def keyPressed():
+    global h
+    global b
+    global w
+    if key == 'u':
+        h = h+1
+    if key == 'j':
+        h = h-1
+    if key == 'h':
+        b = b+1
+    if key == 'k':
+        b = b-1
+    if key == 'o':
+        w = w+1
+    if key == 'l':
+        w = w-1
+    
+    
+    
     

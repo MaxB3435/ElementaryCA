@@ -4,12 +4,14 @@ w = 1
 rows = 2000
 cols = 2000
 
-ruleset = [0,1,0,1,1,0,1,0] #rule 90
+#ruleset = [0,0,0,0,0,0,1,1] 
+ruleset = [0,1,0,1,1,0,1,0] # rule 90
 #ruleset = [0,0,0,1,1,1,1,0] # rule 30
+
 
 def rules(a,b,c):
     return ruleset[7 - (4*a + 2*b + c)] # 2^2*a + 2^1*b + 2^0*c
-# if ruleset = [0,0,0,0,0,0,0,1] return rulset[0] = 1
+# if ruleset = [0,0,0,0,0,0,0,1] return ruleset[7-0-0-0] = 1; return ruleset[7-0-0-1] = 0;
 def generate():
     for i, row in enumerate(cells): #look at first row
         for j in range(1,len(row)-1):
@@ -42,5 +44,5 @@ def draw():
             if v == 1:
                 fill(0)
             else:fill(255)
-            rect(j*w-(cols*w-width)/2,w*i,w,w)
+            rect(j*w-(cols*w-width)/2,w*i-1,w,w)
     
